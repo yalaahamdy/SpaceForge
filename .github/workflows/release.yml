@@ -1,0 +1,68 @@
+name: Release (Windows)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (stable, MSVC)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Typecheck frontend
+        run: npm run typecheck
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Run core tests (safety regression suite included)
+        shell: pwsh
+        run: cargo test -p spaceforge-core --manifest-path src-tauri/Cargo.toml
+
+      - name: Build SpaceForge (NSIS installer + portable exe)
+        run: npm run tauri:build
+
+      - name: Collect artifacts
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path release | Out-Null
+          Copy-Item src-tauri/target/release/spaceforge.exe release/SpaceForge-Portable.exe
+          Get-ChildItem src-tauri/target/release/bundle/nsis -Filter *.exe |
+            Copy-Item -Destination release
+          Get-ChildItem release
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpaceForge-windows
+          path: release/
+
+      - name: Attach to release (tag pushes)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/SpaceForge-Portable.exe
+            release/*.exe

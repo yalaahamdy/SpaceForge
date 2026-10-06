@@ -1,0 +1,109 @@
+/**
+ * SpaceForge design tokens — "deep space" dark (default) + light mode.
+ * Layered surfaces, blue/amber accents, tabular numerals, Windows-native feel.
+ */
+
+:root[data-theme="dark"] {
+  --bg-base: #080b11;
+  --bg-s1: #0d1120;
+  --bg-s2: #121828;
+  --bg-s3: #192035;
+  --bg-hover: rgba(139, 148, 176, 0.08);
+  --bg-active: rgba(59, 130, 246, 0.13);
+
+  --stroke-1: #182035;
+  --stroke-2: #1e2a40;
+  --stroke-focus: #3b82f6;
+
+  --text-1: #e8edf8;
+  --text-2: #8a96b4;
+  --text-3: #58637e;
+
+  --accent: #4f8ef7;
+  --accent-soft: rgba(79, 142, 247, 0.15);
+  --accent-2: #fbbf24;
+  --accent-2-soft: rgba(251, 191, 36, 0.14);
+
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-accent: 0 0 24px rgba(79, 142, 247, 0.18);
+  --glass: rgba(13, 17, 32, 0.78);
+
+  /* Glow tokens */
+  --glow-accent: 0 0 0 1px rgba(79,142,247,0.25), 0 0 16px rgba(79,142,247,0.12);
+  --glow-amber: 0 0 0 1px rgba(251,191,36,0.22), 0 0 14px rgba(251,191,36,0.10);
+
+  /* Mesh gradient for subtle aurora backgrounds */
+  --mesh-bg: radial-gradient(ellipse 60% 45% at 15% 15%, rgba(59,130,246,0.06) 0%, transparent 70%),
+             radial-gradient(ellipse 50% 40% at 85% 80%, rgba(245,158,11,0.04) 0%, transparent 70%);
+
+  /* Nav active glow */
+  --nav-active-border: rgba(79,142,247,0.40);
+}
+
+:root[data-theme="light"] {
+  --bg-base: #f1f4fa;
+  --bg-s1: #ffffff;
+  --bg-s2: #f7f9fd;
+  --bg-s3: #ecf0f8;
+  --bg-hover: rgba(15, 23, 42, 0.05);
+  --bg-active: rgba(37, 99, 235, 0.09);
+
+  --stroke-1: #e0e7f0;
+  --stroke-2: #c8d3e5;
+  --stroke-focus: #2563eb;
+
+  --text-1: #15203a;
+  --text-2: #525f78;
+  --text-3: #8491aa;
+
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.10);
+  --accent-2: #d97706;
+  --accent-2-soft: rgba(217, 119, 6, 0.10);
+
+  --ok: #059669;
+  --warn: #d97706;
+  --danger: #dc2626;
+
+  --shadow-1: 0 1px 3px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15,23,42,0.04);
+  --shadow-2: 0 8px 30px rgba(15, 23, 42, 0.10);
+  --shadow-accent: 0 0 24px rgba(37, 99, 235, 0.12);
+  --glass: rgba(255, 255, 255, 0.88);
+
+  --glow-accent: 0 0 0 1px rgba(37,99,235,0.20), 0 0 14px rgba(37,99,235,0.08);
+  --glow-amber: 0 0 0 1px rgba(217,119,6,0.18), 0 0 12px rgba(217,119,6,0.07);
+
+  --mesh-bg: radial-gradient(ellipse 60% 45% at 15% 15%, rgba(37,99,235,0.04) 0%, transparent 70%),
+             radial-gradient(ellipse 50% 40% at 85% 80%, rgba(217,119,6,0.03) 0%, transparent 70%);
+
+  --nav-active-border: rgba(37,99,235,0.30);
+}
+
+:root {
+  --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "Cascadia Code", "Cascadia Mono", ui-monospace, Consolas, monospace;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 14px;
+
+  --nav-width: 236px;
+  --titlebar-h: 44px;
+  --statusbar-h: 28px;
+
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+  }
+}

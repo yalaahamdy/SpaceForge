@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Default capability: window event + core access. SpaceForge uses no filesystem/network plugin permissions - all privileged logic is Rust-side and guarded by the safety engine.","local":true,"windows":["main"],"permissions":["core:default","core:event:default","core:window:default","dialog:default"]}}

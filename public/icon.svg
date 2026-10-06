@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background deep space gradient -->
+    <radialGradient id="sf-bg-rad" cx="30%" cy="25%" r="85%">
+      <stop offset="0%" stop-color="#161f36"/>
+      <stop offset="45%" stop-color="#0c1120"/>
+      <stop offset="100%" stop-color="#04060a"/>
+    </radialGradient>
+
+    <!-- Squircle container bezel border -->
+    <linearGradient id="sf-bezel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.25"/>
+    </linearGradient>
+
+    <!-- Top-left glassy highlight sheen -->
+    <linearGradient id="sf-glass-sheen" x1="0.1" y1="0" x2="0.6" y2="0.8">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Nebula backdrop flare -->
+    <radialGradient id="sf-nebula" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#1d4ed8" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Secondary warm nebula flare -->
+    <radialGradient id="sf-nebula-warm" cx="65%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Orbital ring (back arc): deep sapphire into electric cyan -->
+    <linearGradient id="sf-ring-back" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="40%" stop-color="#2563eb"/>
+      <stop offset="85%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+
+    <!-- Orbital ring (front arc): electric cyan -> cobalt -> molten gold -> white hot -->
+    <linearGradient id="sf-ring-front" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="25%" stop-color="#3b82f6"/>
+      <stop offset="60%" stop-color="#f59e0b"/>
+      <stop offset="88%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#fffbeb"/>
+    </linearGradient>
+
+    <!-- Planet 3D spherical shading -->
+    <radialGradient id="sf-sphere-shading" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#2a3854"/>
+      <stop offset="35%" stop-color="#151e32"/>
+      <stop offset="75%" stop-color="#0b101c"/>
+      <stop offset="100%" stop-color="#03060c"/>
+    </radialGradient>
+
+    <!-- Molten forge core reactor (active solar heart) -->
+    <radialGradient id="sf-core-reactor" cx="36%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="22%" stop-color="#fef08a"/>
+      <stop offset="55%" stop-color="#f59e0b"/>
+      <stop offset="88%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+
+    <!-- Outer plasma glow filter for glowing elements -->
+    <filter id="sf-glow-intense" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="sf-glow-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Drop shadow filter for 3D occlusion -->
+    <filter id="sf-shadow-drop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+
+    <!-- Clip path for central planet sphere to cast shadow onto it -->
+    <clipPath id="sf-planet-clip">
+      <circle cx="256" cy="256" r="86"/>
+    </clipPath>
+  </defs>
+
+  <!-- ================= 1. BASE CONTAINER (SQUIRCLE) ================= -->
+  <!-- Shadow under the squircle -->
+  <rect x="20" y="24" width="472" height="472" rx="112" fill="#000000" opacity="0.6" filter="url(#sf-glow-soft)"/>
+  <!-- Main squircle surface -->
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="url(#sf-bg-rad)"/>
+  <!-- Bezel edge border -->
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="none" stroke="url(#sf-bezel)" stroke-width="2.5"/>
+  <!-- Glass sheen overlay -->
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="url(#sf-glass-sheen)"/>
+
+  <!-- Background Nebula Flares -->
+  <circle cx="256" cy="256" r="210" fill="url(#sf-nebula)"/>
+  <circle cx="290" cy="220" r="160" fill="url(#sf-nebula-warm)"/>
+
+  <!-- Celestial precision calibration rings (symbolizes engineering / forge) -->
+  <circle cx="256" cy="256" r="192" fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 8"/>
+  <circle cx="256" cy="256" r="132" fill="none" stroke="#60a5fa" stroke-width="1" stroke-opacity="0.12"/>
+
+  <!-- Background Micro-Stars (high dynamic range depth) -->
+  <circle cx="102" cy="96" r="1.8" fill="#ffffff" opacity="0.6"/>
+  <circle cx="410" cy="88" r="2.2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="432" cy="380" r="1.6" fill="#fde68a" opacity="0.5"/>
+  <circle cx="88" cy="396" r="2.0" fill="#93c5fd" opacity="0.6"/>
+  <circle cx="180" cy="64" r="1.4" fill="#ffffff" opacity="0.45"/>
+  <circle cx="360" cy="440" r="1.4" fill="#ffffff" opacity="0.45"/>
+
+  <!-- ================= 2. 3D ORBITAL TORUS: BACK ARC ================= -->
+  <!-- Passes BEHIND the sphere (tilted by -28 degrees) -->
+  <g transform="translate(256, 256) rotate(-28)">
+    <!-- Ambient glow under back ring -->
+    <path
+      d="M -184 0 A 184 76 0 0 1 184 0"
+      fill="none"
+      stroke="#1d4ed8"
+      stroke-width="26"
+      stroke-linecap="round"
+      opacity="0.4"
+      filter="url(#sf-glow-intense)"
+    />
+    <!-- Back arc body -->
+    <path
+      d="M -184 0 A 184 76 0 0 1 184 0"
+      fill="none"
+      stroke="url(#sf-ring-back)"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+    <!-- Subtle inner specular line on back arc -->
+    <path
+      d="M -176 -4 A 176 72 0 0 1 176 -4"
+      fill="none"
+      stroke="#93c5fd"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      opacity="0.5"
+    />
+  </g>
+
+  <!-- ================= 3. CENTRAL CELESTIAL FORGE PLANET ================= -->
+  <g filter="url(#sf-shadow-drop)">
+    <!-- Base 3D Sphere -->
+    <circle cx="256" cy="256" r="86" fill="url(#sf-sphere-shading)"/>
+    <!-- Outer rim atmospheric ring -->
+    <circle cx="256" cy="256" r="86" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-opacity="0.45"/>
+    <circle cx="256" cy="256" r="85" fill="none" stroke="#60a5fa" stroke-width="1" stroke-opacity="0.3"/>
+
+    <!-- Bottom-right ambient rim light from molten forge ring -->
+    <path
+      d="M 200 318 A 86 86 0 0 0 340 268"
+      fill="none"
+      stroke="#f59e0b"
+      stroke-width="3"
+      stroke-opacity="0.4"
+      filter="url(#sf-glow-intense)"
+    />
+
+    <!-- Mechanical / Forge Aperture Iris Ring -->
+    <circle cx="256" cy="256" r="54" fill="none" stroke="#1e293b" stroke-width="6"/>
+    <circle cx="256" cy="256" r="54" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-opacity="0.5" stroke-dasharray="8 6"/>
+
+    <!-- Glowing Molten Forge Core (The Fusion Heart) -->
+    <!-- Core glow corona -->
+    <circle cx="256" cy="256" r="42" fill="#f59e0b" opacity="0.3" filter="url(#sf-glow-soft)"/>
+    <!-- Core sphere body -->
+    <circle cx="256" cy="256" r="34" fill="url(#sf-core-reactor)" filter="url(#sf-glow-intense)"/>
+
+    <!-- White-hot specular micro-core -->
+    <circle cx="251" cy="251" r="9" fill="#ffffff" opacity="0.95"/>
+    <circle cx="249" cy="249" r="4.5" fill="#ffffff"/>
+
+    <!-- Top-left curved glass specular reflection on the planet -->
+    <path
+      d="M 206 200 C 220 184 250 178 280 184 C 255 190 230 205 218 226 C 210 216 206 208 206 200 Z"
+      fill="#ffffff"
+      opacity="0.28"
+    />
+  </g>
+
+  <!-- ================= 4. 3D ORBITAL TORUS: FRONT ARC ================= -->
+  <!-- Soft drop-shadow cast by the front ring ONTO the central planet -->
+  <g clip-path="url(#sf-planet-clip)">
+    <g transform="translate(256, 256) rotate(-28)">
+      <path
+        d="M 184 0 A 184 76 0 0 1 -184 0"
+        fill="none"
+        stroke="#000000"
+        stroke-width="34"
+        opacity="0.65"
+        filter="url(#sf-glow-intense)"
+      />
+    </g>
+  </g>
+
+  <!-- Front Arc Body: passes IN FRONT of the sphere -->
+  <g transform="translate(256, 256) rotate(-28)">
+    <!-- Radiant ambient corona glow under front arc -->
+    <path
+      d="M 184 0 A 184 76 0 0 1 -184 0"
+      fill="none"
+      stroke="#f59e0b"
+      stroke-width="34"
+      stroke-linecap="round"
+      opacity="0.35"
+      filter="url(#sf-glow-soft)"
+    />
+    <!-- Main front ring band -->
+    <path
+      d="M 184 0 A 184 76 0 0 1 -184 0"
+      fill="none"
+      stroke="url(#sf-ring-front)"
+      stroke-width="24"
+      stroke-linecap="round"
+      filter="url(#sf-glow-intense)"
+    />
+    <!-- Specular highlight streak along the ring ridge -->
+    <path
+      d="M 176 3 A 176 72 0 0 1 -176 3"
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      opacity="0.75"
+    />
+  </g>
+
+  <!-- ================= 5. SATELLITES & STELLAR FLARES ================= -->
+  <!-- Primary Forge Satellite (Top-Right on orbit) at (394, 172) -->
+  <g transform="translate(394, 172)">
+    <!-- Outer flare corona -->
+    <circle cx="0" cy="0" r="28" fill="#f59e0b" opacity="0.25" filter="url(#sf-glow-soft)"/>
+    <!-- Satellite body -->
+    <circle cx="0" cy="0" r="14" fill="url(#sf-core-reactor)" filter="url(#sf-glow-intense)"/>
+    <!-- Specular core glint -->
+    <circle cx="-3.5" cy="-3.5" r="4.5" fill="#ffffff" opacity="0.95"/>
+
+    <!-- 4-Point Diamond Spark Flare -->
+    <path d="M 0 -18 Q 0 0 -18 0 Q 0 0 0 18 Q 0 0 18 0 Q 0 0 0 -18 Z" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- Secondary Plasma Satellite (Bottom-Left on orbit) at (118, 338) -->
+  <g transform="translate(118, 338)">
+    <circle cx="0" cy="0" r="20" fill="#38bdf8" opacity="0.3" filter="url(#sf-glow-soft)"/>
+    <circle cx="0" cy="0" r="10" fill="#38bdf8" filter="url(#sf-glow-intense)"/>
+    <circle cx="-2.5" cy="-2.5" r="3" fill="#ffffff" opacity="0.9"/>
+  </g>
+
+  <!-- Tertiary Accent Spark (at ring zenith) -->
+  <g transform="translate(322, 134)">
+    <circle cx="0" cy="0" r="3" fill="#ffffff" opacity="0.9" filter="url(#sf-glow-intense)"/>
+    <path d="M 0 -8 L 0 8 M -8 0 L 8 0" stroke="#ffffff" stroke-width="1.2" opacity="0.75"/>
+  </g>
+</svg>
